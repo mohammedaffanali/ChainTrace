@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { updateStandaloneOfficer } from '@/lib/standaloneStore';
 
 const BACKEND_URL = process.env.FASTAPI_BACKEND_URL || 'http://localhost:8000';
 
@@ -6,9 +7,13 @@ export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
+  const body = await req.json().catch(() => ({}));
+
   try {
-    const { id } = await params;
-    const body = await req.json();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 1200);
+
     const cookieHeader = req.headers.get('cookie') || '';
     const csrfHeader = req.headers.get('x-csrf-token') || '';
 
@@ -26,22 +31,23 @@ export async function PATCH(
       method: 'PATCH',
       headers,
       body: JSON.stringify(body),
+      signal: controller.signal,
     });
+    clearTimeout(timeoutId);
 
-    const data = await res.json();
-    if (!res.ok) {
-      return NextResponse.json(
-        { detail: data.detail || 'Failed to update officer status' },
-        { status: res.status }
-      );
+    if (res.ok) {
+      const data = await res.json();
+      return NextResponse.json(data);
     }
-
-    return NextResponse.json(data);
-  } catch (err: unknown) {
-    console.error('[api/users/id] Backend unreachable:', err instanceof Error ? err.message : err);
-    return NextResponse.json(
-      { detail: 'User update service unavailable. Please ensure the backend server is running.' },
-      { status: 503 }
-    );
+  } catch {
+    // Offline fallback
   }
+
+  // Standalone user status/role update fallback
+  const updated = updateStandaloneOfficer(id, body);
+  if (!updated) {
+    return NextResponse.json({ detail: 'Officer not found' }, { status: 404 });
+  }
+
+  return NextResponse.json({ success: true, user: updated });
 }

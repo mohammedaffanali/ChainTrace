@@ -83,7 +83,8 @@ function InvestigationsContent() {
     };
 
     try {
-      const res = await fetch('http://localhost:8000/api/v1/investigations', {
+      const baseUrl = getApiBaseUrl();
+      const res = await fetch(`${baseUrl}/api/v1/investigations`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
