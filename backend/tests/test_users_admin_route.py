@@ -1,4 +1,4 @@
-﻿import pytest
+import pytest
 import httpx
 from app.main import app
 from app.db.init_data import seed_database
@@ -42,10 +42,12 @@ async def test_users_admin_endpoints():
         assert "ADMIN-LEA-001" in badge_ids
 
         # 4. Provision a new officer
-        new_badge = "CBI-TEST-9901"
+        import uuid
+        uid = uuid.uuid4().hex[:6].upper()
+        new_badge = f"CBI-TEST-{uid}"
         create_payload = {
             "badge_id": new_badge,
-            "email": "test.officer9901@cbi.gov.in",
+            "email": f"test.officer{uid.lower()}@cbi.gov.in",
             "password": "TemporaryPin9901!",
             "full_name": "DySP Rajeshwari Sen",
             "designation": "Forensic Blockchain Investigator",

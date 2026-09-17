@@ -126,25 +126,25 @@ function InvestigationsContent() {
     <DashboardLayout>
       <div className="flex flex-col w-full gap-5">
         {/* Page Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-theme-surface p-4 rounded-xl border border-theme-border shadow-sm transition-colors">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 bg-[#1C1D20]/90 backdrop-blur-xl p-5 rounded-xl border border-white/[0.08] shadow-glass-card transition-colors">
           <div>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-theme-primary animate-pulse"></span>
-              <span className="font-mono text-xs text-theme-primary uppercase tracking-wider font-semibold">
+              <span className="w-2 h-2 rounded-full bg-[#7CB9E8] animate-pulse"></span>
+              <span className="font-mono text-xs text-[#7CB9E8] uppercase tracking-wider font-semibold">
                 STATUTORY CRIME REGISTER // PMLA 2002 &amp; IT ACT 2000
               </span>
             </div>
-            <h1 className="font-space font-bold text-2xl text-theme-heading mt-1">
+            <h1 className="font-editorial font-bold text-2xl sm:text-3xl text-[#FAFAF5] mt-1 tracking-tight">
               Case Management &amp; Investigation Register
             </h1>
-            <p className="font-mono text-xs text-theme-text-muted mt-0.5">
+            <p className="font-mono text-xs text-[#9D9A92] mt-0.5">
               Active forensic operations across FIU-IND, Enforcement Directorate, and State Cyber Cells
             </p>
           </div>
 
           <button
             onClick={() => setShowNewCaseModal(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-theme-primary hover:opacity-90 text-white font-space font-semibold text-xs rounded-md shadow-md shadow-theme-primary/20 transition-all shrink-0"
+            className="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#1560BD] to-[#436B95] hover:opacity-90 text-[#FAFAF5] font-space font-semibold text-xs rounded-lg shadow-glass-card transition-all shrink-0"
           >
             <span className="material-symbols-outlined text-[18px]">add_circle</span>
             <span>Initiate New Investigation</span>
@@ -152,36 +152,36 @@ function InvestigationsContent() {
         </div>
 
         {/* Quick Metrics */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          <div className="p-4 bg-theme-surface rounded-xl border border-theme-border shadow-sm transition-colors">
-            <span className="font-mono text-xs text-theme-text-muted uppercase">Total Active Mandates</span>
-            <div className="mt-2 font-space font-bold text-2xl text-theme-heading">{casesList.length} Inquiries</div>
-            <span className="font-mono text-[10px] text-theme-primary mt-1 block">All High-Priority LEA Directives</span>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          <div className="p-4 bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-white/[0.08] shadow-glass-card transition-colors">
+            <span className="font-mono text-xs text-[#9D9A92] uppercase">Total Active Mandates</span>
+            <div className="mt-2 font-space font-bold text-2xl text-[#FAFAF5]">{casesList.length} Inquiries</div>
+            <span className="font-mono text-[10px] text-[#7CB9E8] mt-1 block">All High-Priority LEA Directives</span>
           </div>
 
-          <div className="p-4 bg-theme-surface rounded-xl border border-red-500/30 shadow-sm transition-colors">
-            <span className="font-mono text-xs text-theme-text-muted uppercase">Critical Threat Priority</span>
-            <div className="mt-2 font-space font-bold text-2xl text-red-600 dark:text-red-400">
+          <div className="p-4 bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-[#960018]/40 shadow-glass-card transition-colors">
+            <span className="font-mono text-xs text-[#9D9A92] uppercase">Critical Threat Priority</span>
+            <div className="mt-2 font-space font-bold text-2xl text-[#C44536]">
               {casesList.filter((c) => c.priority === 'CRITICAL').length} Operations
             </div>
-            <span className="font-mono text-[10px] text-red-500 mt-1 block">Syndicates / Darknet Escrows</span>
+            <span className="font-mono text-[10px] text-[#C44536] mt-1 block">Syndicates / Darknet Escrows</span>
           </div>
 
-          <div className="p-4 bg-theme-surface rounded-xl border border-theme-border shadow-sm transition-colors">
-            <span className="font-mono text-xs text-theme-text-muted uppercase">Cumulative Exposure</span>
-            <div className="mt-2 font-space font-bold text-2xl text-emerald-600 dark:text-emerald-400">
+          <div className="p-4 bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-[#ADC178]/30 shadow-glass-card transition-colors">
+            <span className="font-mono text-xs text-[#9D9A92] uppercase">Cumulative Exposure</span>
+            <div className="mt-2 font-space font-bold text-2xl text-[#ADC178]">
               ₹184.60 Crore
             </div>
-            <span className="font-mono text-[10px] text-theme-text-muted mt-1 block">
+            <span className="font-mono text-[10px] text-[#9D9A92] mt-1 block">
               Tracked across 6 Layer-1 &amp; Layer-2 Chains
             </span>
           </div>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-theme-surface p-3 rounded-xl border border-theme-border shadow-sm transition-colors">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-[#1C1D20]/90 backdrop-blur-xl p-3.5 rounded-xl border border-white/[0.08] shadow-glass-card transition-colors">
           <div className="relative flex-1 max-w-md">
-            <span className="material-symbols-outlined absolute left-3 top-2.5 text-theme-text-muted text-[18px]">
+            <span className="material-symbols-outlined absolute left-3 top-2.5 text-[#74736F] text-[18px]">
               search
             </span>
             <input
@@ -189,7 +189,7 @@ function InvestigationsContent() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search Case ID, Operation Name, Lead Officer, or Agency..."
-              className="w-full h-9 pl-9 pr-3 bg-theme-surface-subtle text-theme-fg text-xs font-mono rounded-md border border-theme-border focus:border-theme-primary focus:outline-none"
+              className="w-full h-9 pl-9 pr-3 bg-black/30 text-[#FAFAF5] text-xs font-mono rounded-lg border border-white/[0.08] focus:border-[#7CB9E8] focus:outline-none placeholder:text-[#74736F]"
             />
           </div>
 
@@ -199,10 +199,10 @@ function InvestigationsContent() {
               <button
                 key={status}
                 onClick={() => setStatusFilter(status)}
-                className={`px-2.5 py-1 rounded font-mono text-[10px] font-medium border transition-colors ${
+                className={`px-3 py-1.5 rounded-lg font-mono text-[10px] font-medium border transition-colors ${
                   statusFilter === status
-                    ? 'bg-theme-primary text-white border-theme-primary shadow-sm'
-                    : 'bg-theme-surface-subtle text-theme-text-muted border-theme-border hover:text-theme-heading'
+                    ? 'bg-[#1560BD] text-[#FAFAF5] border-[#7CB9E8] shadow-signal-blue'
+                    : 'bg-black/20 text-[#9D9A92] border-white/[0.06] hover:text-[#FAFAF5] hover:border-white/[0.12]'
                 }`}
               >
                 {status}
@@ -212,10 +212,10 @@ function InvestigationsContent() {
         </div>
 
         {/* Cases Table */}
-        <div className="bg-theme-surface rounded-xl border border-theme-border overflow-hidden shadow-sm transition-colors">
+        <div className="bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-white/[0.08] overflow-hidden shadow-glass-card transition-colors">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-mono">
-              <thead className="bg-theme-surface-subtle border-b border-theme-border text-theme-text-muted uppercase text-[11px]">
+              <thead className="bg-black/30 border-b border-white/[0.06] text-[#9D9A92] uppercase text-[11px]">
                 <tr>
                   <th className="py-3 px-4">Case Docket</th>
                   <th className="py-3 px-4">Agency / Lead</th>
@@ -226,59 +226,60 @@ function InvestigationsContent() {
                   <th className="py-3 px-4 text-center">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-theme-border">
+              <tbody className="divide-y divide-white/[0.04]">
                 {filteredCases.map((c) => (
-                  <tr key={c.id} className="hover:bg-theme-surface-subtle transition-colors">
-                    <td className="py-3 px-4">
+                  <tr key={c.id} className="hover:bg-white/[0.02] transition-colors">
+                    <td className="py-3.5 px-4">
                       <div className="flex flex-col">
-                        <span className="font-bold text-theme-primary text-xs">{c.id}</span>
-                        <span className="font-sans text-theme-heading text-xs font-medium line-clamp-1 mt-0.5">
+                        <span className="font-bold text-[#7CB9E8] text-xs">{c.id}</span>
+                        <span className="font-sans text-[#FAFAF5] text-xs font-medium line-clamp-1 mt-0.5">
                           {c.title}
                         </span>
-                        <span className="text-[10px] text-theme-text-muted">Opened: {c.openedDate}</span>
+                        <span className="text-[10px] text-[#74736F]">Opened: {c.openedDate}</span>
                       </div>
                     </td>
-                    <td className="py-3 px-4">
-                      <div className="text-theme-heading font-sans text-xs font-medium">{c.leadOfficer}</div>
-                      <span className="text-[10px] text-theme-text-muted">{c.agency}</span>
+                    <td className="py-3.5 px-4">
+                      <div className="text-[#FAFAF5] font-sans text-xs font-medium">{c.leadOfficer}</div>
+                      <span className="text-[10px] text-[#74736F]">{c.agency}</span>
                     </td>
-                    <td className="py-3 px-4">
+                    <td className="py-3.5 px-4">
                       <div className="flex items-center gap-1 flex-wrap">
                         {c.chains.map((ch) => (
                           <span
                             key={ch}
-                            className="px-1.5 py-0.5 rounded bg-theme-surface-subtle text-theme-primary text-[9px] border border-theme-border"
+                            className="px-1.5 py-0.5 rounded bg-black/30 text-[#7CB9E8] text-[9px] border border-[#7CB9E8]/20"
                           >
                             {ch}
                           </span>
                         ))}
                       </div>
                     </td>
-                    <td className="py-3 px-4 text-right font-bold text-emerald-600 dark:text-emerald-400">
+                    <td className="py-3.5 px-4 text-right font-bold text-[#ADC178]">
                       {c.totalExposureINR}
                     </td>
-                    <td className="py-3 px-4 text-center">
+                    <td className="py-3.5 px-4 text-center">
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                           c.priority === 'CRITICAL'
-                            ? 'bg-red-500/15 text-red-600 dark:text-red-400 border border-red-500/30'
-                            : 'bg-amber-500/15 text-amber-600 dark:text-amber-400 border border-amber-500/30'
+                            ? 'bg-[#960018]/20 text-[#FAFAF5] border border-[#960018]/40'
+                            : 'bg-amber-500/15 text-amber-300 border border-amber-500/30'
                         }`}
                       >
                         {c.priority}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-center">
-                      <span className="px-2 py-0.5 rounded bg-theme-surface-subtle text-theme-primary text-[10px] border border-theme-border font-semibold">
+                    <td className="py-3.5 px-4 text-center">
+                      <span className="px-2 py-0.5 rounded bg-black/30 text-[#7CB9E8] text-[10px] border border-white/[0.06] font-semibold">
                         {c.status}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-center">
+                    <td className="py-3.5 px-4 text-center">
                       <Link
                         href={`/investigations/${c.id}`}
-                        className="px-3 py-1 rounded bg-theme-surface-subtle hover:bg-theme-primary hover:text-white text-theme-fg text-xs border border-theme-border transition-colors font-medium"
+                        className="px-3 py-1.5 rounded-lg bg-[#25282D]/80 hover:bg-[#1560BD] text-[#FAFAF5] text-xs border border-white/[0.08] transition-colors font-medium shadow-glass-card inline-flex items-center gap-1"
                       >
-                        Dossier →
+                        <span>Dossier</span>
+                        <span className="text-[11px]">→</span>
                       </Link>
                     </td>
                   </tr>
@@ -291,23 +292,23 @@ function InvestigationsContent() {
 
       {/* New Case Creation Modal */}
       {showNewCaseModal && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="w-full max-w-lg bg-theme-surface border border-theme-border rounded-xl shadow-2xl p-6 space-y-4 animate-in fade-in zoom-in-95 transition-colors">
-            <div className="flex items-center justify-between pb-3 border-b border-theme-border">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+          <div className="w-full max-w-lg bg-[#1C1D20] border border-white/[0.12] rounded-xl shadow-glass-elevated p-6 space-y-4 animate-in fade-in zoom-in-95 transition-colors">
+            <div className="flex items-center justify-between pb-3 border-b border-white/[0.08]">
               <div className="flex items-center gap-2">
-                <span className="material-symbols-outlined text-theme-primary text-[20px]">create_new_folder</span>
-                <h3 className="font-space font-bold text-base text-theme-heading">
+                <span className="material-symbols-outlined text-[#7CB9E8] text-[20px]">create_new_folder</span>
+                <h3 className="font-space font-bold text-base text-[#FAFAF5]">
                   Initiate Statutory Cyber Investigation
                 </h3>
               </div>
-              <button onClick={() => setShowNewCaseModal(false)} className="text-theme-text-muted hover:text-theme-heading">
+              <button onClick={() => setShowNewCaseModal(false)} className="text-[#9D9A92] hover:text-[#FAFAF5]">
                 <span className="material-symbols-outlined text-[18px]">close</span>
               </button>
             </div>
 
             <form onSubmit={handleCreateCase} className="space-y-3 text-xs font-sans">
               <div>
-                <label className="block font-mono text-[11px] text-theme-text-secondary uppercase mb-1">
+                <label className="block font-mono text-[11px] text-[#9D9A92] uppercase mb-1">
                   Investigation Title / Operation Codename
                 </label>
                 <input
@@ -316,46 +317,46 @@ function InvestigationsContent() {
                   value={newCaseTitle}
                   onChange={(e) => setNewCaseTitle(e.target.value)}
                   placeholder="e.g. Operation NetSweep — Hawala Bridge Cluster"
-                  className="w-full h-9 px-3 bg-theme-surface-secondary border border-theme-border rounded-md text-theme-heading font-mono text-xs focus:border-theme-primary focus:outline-none"
+                  className="w-full h-9 px-3 bg-black/30 border border-white/[0.08] rounded-lg text-[#FAFAF5] font-mono text-xs focus:border-[#7CB9E8] focus:outline-none placeholder:text-[#74736F]"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-mono text-[11px] text-theme-text-secondary uppercase mb-1">
+                  <label className="block font-mono text-[11px] text-[#9D9A92] uppercase mb-1">
                     Originating Agency
                   </label>
                   <select
                     value={newCaseAgency}
                     onChange={(e) => setNewCaseAgency(e.target.value)}
-                    className="w-full h-9 px-2 bg-theme-surface-secondary border border-theme-border rounded-md text-theme-heading text-xs focus:border-theme-primary focus:outline-none"
+                    className="w-full h-9 px-2 bg-black/30 border border-white/[0.08] rounded-lg text-[#FAFAF5] text-xs focus:border-[#7CB9E8] focus:outline-none"
                   >
-                    <option>Delhi Police Cyber Command &amp; FIU-IND Liaison</option>
-                    <option>Enforcement Directorate (ED) PMLA Cell</option>
-                    <option>CBI Cyber Crime Division</option>
-                    <option>CERT-In Threat Defense Matrix</option>
+                    <option className="bg-[#1C1D20] text-[#FAFAF5]">Delhi Police Cyber Command &amp; FIU-IND Liaison</option>
+                    <option className="bg-[#1C1D20] text-[#FAFAF5]">Enforcement Directorate (ED) PMLA Cell</option>
+                    <option className="bg-[#1C1D20] text-[#FAFAF5]">CBI Cyber Crime Division</option>
+                    <option className="bg-[#1C1D20] text-[#FAFAF5]">CERT-In Threat Defense Matrix</option>
                   </select>
                 </div>
 
                 <div>
-                  <label className="block font-mono text-[11px] text-theme-text-secondary uppercase mb-1">
+                  <label className="block font-mono text-[11px] text-[#9D9A92] uppercase mb-1">
                     Priority Tier
                   </label>
                   <select
                     value={newCasePriority}
                     onChange={(e) => setNewCasePriority(e.target.value as any)}
-                    className="w-full h-9 px-2 bg-theme-surface-secondary border border-theme-border rounded-md text-theme-heading text-xs focus:border-theme-primary focus:outline-none"
+                    className="w-full h-9 px-2 bg-black/30 border border-white/[0.08] rounded-lg text-[#FAFAF5] text-xs focus:border-[#7CB9E8] focus:outline-none"
                   >
-                    <option value="CRITICAL">CRITICAL (National Threat / High Escrow)</option>
-                    <option value="HIGH">HIGH (Organized Syndicate)</option>
-                    <option value="MEDIUM">MEDIUM (Retail Fraud / Task Scam)</option>
+                    <option value="CRITICAL" className="bg-[#1C1D20] text-[#FAFAF5]">CRITICAL (National Threat / High Escrow)</option>
+                    <option value="HIGH" className="bg-[#1C1D20] text-[#FAFAF5]">HIGH (Organized Syndicate)</option>
+                    <option value="MEDIUM" className="bg-[#1C1D20] text-[#FAFAF5]">MEDIUM (Retail Fraud / Task Scam)</option>
                   </select>
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-mono text-[11px] text-theme-text-secondary uppercase mb-1">
+                  <label className="block font-mono text-[11px] text-[#9D9A92] uppercase mb-1">
                     Estimated Rupee Exposure (INR)
                   </label>
                   <input
@@ -364,12 +365,12 @@ function InvestigationsContent() {
                     value={newCaseExposure}
                     onChange={(e) => setNewCaseExposure(e.target.value)}
                     placeholder="e.g. ₹15,00,00,000"
-                    className="w-full h-9 px-3 bg-theme-surface-secondary border border-theme-border rounded-md text-theme-heading font-mono text-xs focus:border-theme-primary focus:outline-none"
+                    className="w-full h-9 px-3 bg-black/30 border border-white/[0.08] rounded-lg text-[#FAFAF5] font-mono text-xs focus:border-[#7CB9E8] focus:outline-none placeholder:text-[#74736F]"
                   />
                 </div>
 
                 <div>
-                  <label className="block font-mono text-[11px] text-theme-text-secondary uppercase mb-1">
+                  <label className="block font-mono text-[11px] text-[#9D9A92] uppercase mb-1">
                     Primary Target Wallet Address
                   </label>
                   <input
@@ -378,26 +379,26 @@ function InvestigationsContent() {
                     value={newCaseWallet}
                     onChange={(e) => setNewCaseWallet(e.target.value)}
                     placeholder="0x..., bc1..., or TRC20..."
-                    className="w-full h-9 px-3 bg-theme-surface-secondary border border-theme-border rounded-md text-theme-heading font-mono text-xs focus:border-theme-primary focus:outline-none"
+                    className="w-full h-9 px-3 bg-black/30 border border-white/[0.08] rounded-lg text-[#FAFAF5] font-mono text-xs focus:border-[#7CB9E8] focus:outline-none placeholder:text-[#74736F]"
                   />
                 </div>
               </div>
 
-              <div className="p-3 bg-theme-surface-secondary border border-theme-border rounded-md text-[11px] text-theme-text-muted">
+              <div className="p-3 bg-black/20 border border-white/[0.06] rounded-lg text-[11px] text-[#9D9A92] leading-relaxed">
                 Mandate Notice: Initiating an inquiry activates automated Section 65B audit trails and queries Indian FIU-registered VASP mempools.
               </div>
 
-              <div className="pt-2 flex justify-end gap-2">
+              <div className="pt-2 flex justify-end gap-2 border-t border-white/[0.08]">
                 <button
                   type="button"
                   onClick={() => setShowNewCaseModal(false)}
-                  className="px-4 py-2 bg-theme-surface-secondary hover:bg-theme-surface-tertiary text-theme-fg rounded-md font-space text-xs border border-theme-border transition-colors"
+                  className="px-4 py-2 bg-white/5 hover:bg-white/10 text-[#FAFAF5] rounded-lg font-space text-xs border border-white/[0.08] transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2 bg-theme-primary hover:bg-theme-primary-hover text-white font-space font-semibold rounded-md text-xs shadow-md transition-colors"
+                  className="px-5 py-2 bg-gradient-to-r from-[#1560BD] to-[#436B95] hover:opacity-90 text-[#FAFAF5] font-space font-semibold rounded-lg text-xs shadow-glass-card transition-colors"
                 >
                   Register Case
                 </button>

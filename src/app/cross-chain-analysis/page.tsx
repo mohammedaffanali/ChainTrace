@@ -76,72 +76,72 @@ export default function CrossChainAnalysisPage() {
     <DashboardLayout>
       <div className="flex flex-col w-full gap-5">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-theme-surface p-4 rounded-xl border border-theme-border shadow-sm transition-colors">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-[#1C1D20]/90 backdrop-blur-xl p-5 rounded-xl border border-white/[0.08] shadow-glass-card transition-colors">
           <div>
-            <div className="flex items-center gap-2">
-              <span className={`w-2 h-2 rounded-full ${mode === 'live' ? 'bg-emerald-400 animate-pulse' : 'bg-theme-primary animate-pulse'}`}></span>
-              <span className={`font-mono text-xs uppercase tracking-wider font-semibold ${mode === 'live' ? 'text-emerald-400' : 'text-theme-primary'}`}>
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className={`w-2 h-2 rounded-full ${mode === 'live' ? 'bg-[#ADC178] animate-pulse' : 'bg-[#7CB9E8] animate-pulse'}`}></span>
+              <span className={`font-mono text-xs uppercase tracking-wider font-semibold ${mode === 'live' ? 'text-[#ADC178]' : 'text-[#7CB9E8]'}`}>
                 INTEROPERABILITY SURVEILLANCE // {mode === 'live' ? 'LIVE BRIDGE MATRIX' : 'LIQUIDITY CORRELATOR'}
               </span>
-              <span className="text-theme-border">•</span>
+              <span className="text-[#74736F]">•</span>
               <span
-                className={`font-mono text-[9px] px-1.5 py-0.2 rounded font-bold uppercase border ${
+                className={`font-mono text-[9px] px-2 py-0.5 rounded font-bold uppercase border ${
                   mode === 'live'
-                    ? 'bg-emerald-500/15 text-emerald-400 border-emerald-500/30'
-                    : 'bg-amber-500/15 text-amber-500 border-amber-500/30'
+                    ? 'bg-[#1B512D]/30 text-[#ADC178] border-[#ADC178]/30'
+                    : 'bg-white/5 text-[#ADC178] border-[#ADC178]/30'
                 }`}
               >
                 {mode === 'live' ? 'LIVE TELEMETRY' : 'DEMO MATRIX'}
               </span>
             </div>
-            <h1 className="font-space font-bold text-2xl text-theme-heading mt-1">
+            <h1 className="font-editorial font-bold text-2xl sm:text-3xl text-[#FAFAF5] mt-1 tracking-tight">
               Cross-Chain Analysis Matrix
             </h1>
-            <p className="font-mono text-xs text-theme-text-muted mt-0.5">
+            <p className="font-mono text-xs text-[#9D9A92] mt-0.5">
               Heuristic matching of multi-sig relayer events across Ethereum, Solana, Tron, and Bitcoin
             </p>
           </div>
 
           <div className="flex items-center gap-2">
-            <span className="font-mono text-xs px-3 py-1.5 rounded bg-theme-surface-subtle text-theme-primary border border-theme-border font-semibold">
+            <span className="font-mono text-xs px-3 py-1.5 rounded-lg bg-black/30 text-[#7CB9E8] border border-white/[0.08] font-semibold">
               4 ACTIVE BRIDGE RELAYERS MONITORED
             </span>
           </div>
         </div>
 
         {/* Bridge KPIs */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div className="p-4 bg-theme-surface rounded-xl border border-theme-border shadow-sm transition-colors">
-            <span className="font-mono text-xs text-theme-text-muted uppercase">Bridge Volume Tracked</span>
-            <div className="mt-2 font-space font-bold text-2xl text-emerald-600 dark:text-emerald-400">₹38.45 Crore</div>
-            <span className="font-mono text-[10px] text-theme-primary mt-1 block">Crossed in last 7 days</span>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          <div className="p-4 bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-white/[0.08] shadow-glass-card transition-colors">
+            <span className="font-mono text-xs text-[#9D9A92] uppercase">Bridge Volume Tracked</span>
+            <div className="mt-2 font-space font-bold text-2xl text-[#ADC178]">₹38.45 Crore</div>
+            <span className="font-mono text-[10px] text-[#7CB9E8] mt-1 block">Crossed in last 7 days</span>
           </div>
 
-          <div className="p-4 bg-theme-surface rounded-xl border border-theme-border shadow-sm transition-colors">
-            <span className="font-mono text-xs text-theme-text-muted uppercase">Correlation Confidence</span>
-            <div className="mt-2 font-space font-bold text-2xl text-theme-heading">96.8% Average</div>
-            <span className="font-mono text-[10px] text-theme-accent mt-1 block">Zero-Knowledge Relayer Decryption</span>
+          <div className="p-4 bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-white/[0.08] shadow-glass-card transition-colors">
+            <span className="font-mono text-xs text-[#9D9A92] uppercase">Correlation Confidence</span>
+            <div className="mt-2 font-space font-bold text-2xl text-[#FAFAF5]">96.8% Average</div>
+            <span className="font-mono text-[10px] text-[#7CB9E8] mt-1 block">Zero-Knowledge Relayer Decryption</span>
           </div>
 
-          <div className="p-4 bg-theme-surface rounded-xl border border-red-500/30 shadow-sm transition-colors">
-            <span className="font-mono text-xs text-theme-text-muted uppercase">Intercepted at Off-Ramp</span>
-            <div className="mt-2 font-space font-bold text-2xl text-red-600 dark:text-red-400">₹14.20 Crore</div>
-            <span className="font-mono text-[10px] text-red-500 mt-1 block">Frozen upon Indian VASP deposit</span>
+          <div className="p-4 bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-[#960018]/40 shadow-glass-card transition-colors">
+            <span className="font-mono text-xs text-[#9D9A92] uppercase">Intercepted at Off-Ramp</span>
+            <div className="mt-2 font-space font-bold text-2xl text-[#C44536]">₹14.20 Crore</div>
+            <span className="font-mono text-[10px] text-[#C44536] mt-1 block">Frozen upon Indian VASP deposit</span>
           </div>
         </div>
 
         {/* Cross Chain Correlations Table */}
-        <div className="bg-theme-surface rounded-xl border border-theme-border overflow-hidden shadow-sm transition-colors">
-          <div className="p-4 bg-theme-surface-subtle border-b border-theme-border flex items-center justify-between">
-            <h3 className="font-space font-semibold text-sm text-theme-heading">
+        <div className="bg-[#1C1D20]/90 backdrop-blur-xl rounded-xl border border-white/[0.08] overflow-hidden shadow-glass-card transition-colors">
+          <div className="p-4 bg-black/20 border-b border-white/[0.06] flex items-center justify-between">
+            <h3 className="font-space font-semibold text-sm text-[#FAFAF5]">
               De-Anonymized Cross-Chain Swaps &amp; Bridge Hops
             </h3>
-            <span className="font-mono text-xs text-theme-text-muted">Real-time correlation via RPC nonces</span>
+            <span className="font-mono text-xs text-[#74736F]">Real-time correlation via RPC nonces</span>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs font-mono">
-              <thead className="bg-theme-surface-subtle text-theme-text-muted uppercase text-[11px] border-b border-theme-border">
+              <thead className="bg-black/30 text-[#9D9A92] uppercase text-[11px] border-b border-white/[0.06]">
                 <tr>
                   <th className="p-3">Correlated Protocol</th>
                   <th className="p-3">Source &gt; Destination</th>
@@ -151,33 +151,33 @@ export default function CrossChainAnalysisPage() {
                   <th className="p-3 text-center">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-theme-border">
+              <tbody className="divide-y divide-white/[0.04]">
                 {CORRELATIONS.map((c) => (
-                  <tr key={c.id} className="hover:bg-theme-surface-subtle transition-colors">
-                    <td className="p-3">
-                      <div className="font-sans font-bold text-theme-heading text-xs">{c.bridgeProtocol}</div>
-                      <div className="text-[10px] text-theme-text-muted mt-0.5">{c.timestamp}</div>
+                  <tr key={c.id} className="hover:bg-white/[0.02] transition-colors">
+                    <td className="p-3.5">
+                      <div className="font-sans font-bold text-[#FAFAF5] text-xs">{c.bridgeProtocol}</div>
+                      <div className="text-[10px] text-[#74736F] mt-0.5">{c.timestamp}</div>
                     </td>
-                    <td className="p-3">
-                      <div className="flex items-center gap-1 text-theme-primary font-semibold">
+                    <td className="p-3.5">
+                      <div className="flex items-center gap-1 text-[#7CB9E8] font-semibold">
                         <span>{c.sourceChain}</span>
-                        <span>&gt;</span>
-                        <span className="text-theme-accent">{c.targetChain}</span>
+                        <span className="text-[#74736F]">&gt;</span>
+                        <span className="text-[#B23AEE]">{c.targetChain}</span>
                       </div>
                       <div className="mt-1 flex items-center gap-1">
                         <CopyBadge text={c.sourceTx} display="Source TX" />
                         <CopyBadge text={c.targetTx} display="Target TX" />
                       </div>
                     </td>
-                    <td className="p-3 text-theme-heading font-medium">{c.cryptoPair}</td>
-                    <td className="p-3 text-right font-bold text-emerald-600 dark:text-emerald-400">{c.amountINR}</td>
-                    <td className="p-3 text-center font-bold text-theme-heading">{c.confidenceScore}%</td>
-                    <td className="p-3 text-center">
+                    <td className="p-3.5 text-[#D8D3C7] font-medium">{c.cryptoPair}</td>
+                    <td className="p-3.5 text-right font-bold text-[#ADC178]">{c.amountINR}</td>
+                    <td className="p-3.5 text-center font-bold text-[#FAFAF5]">{c.confidenceScore}%</td>
+                    <td className="p-3.5 text-center">
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                           c.status === 'FLAGGED'
-                            ? 'bg-red-500/15 text-red-600 dark:text-red-400 border border-red-500/30'
-                            : 'bg-theme-primary/15 text-theme-primary border border-theme-primary/30'
+                            ? 'bg-[#960018]/20 text-[#FAFAF5] border border-[#960018]/40'
+                            : 'bg-[#1560BD]/20 text-[#7CB9E8] border border-[#7CB9E8]/30'
                         }`}
                       >
                         {c.status}

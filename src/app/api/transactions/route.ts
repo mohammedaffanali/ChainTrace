@@ -25,6 +25,65 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const BACKEND_URL = process.env.FASTAPI_BACKEND_URL || 'http://localhost:8000';
+
+    // 1. Attempt to query FastAPI backend in live mode
+    if (mode !== 'demo') {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+        const res = await fetch(`${BACKEND_URL}/api/v1/analysis/wallet`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            cookie: req.headers.get('cookie') || '',
+            authorization: req.headers.get('authorization') || '',
+          },
+          body: JSON.stringify({
+            address,
+            network: chain.toLowerCase(),
+            limit,
+          }),
+          signal: controller.signal,
+        });
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const analysisData = await res.json();
+          const txs = analysisData.transactions || [];
+          return NextResponse.json(
+            {
+              mode: 'live',
+              chain,
+              address,
+              balance: analysisData.balance,
+              activity: {
+                firstSeenTimestamp: txs.length > 0 ? txs[txs.length - 1].timestamp : Math.floor(Date.now() / 1000),
+                lastActiveTimestamp: txs.length > 0 ? txs[0].timestamp : Math.floor(Date.now() / 1000),
+                totalTransactions: txs.length,
+              },
+              transactions: txs,
+              tokenTransfers: [],
+              retrievedAt: analysisData.created_at || new Date().toISOString(),
+              isDemonstrationData: false,
+              providerInfo: {
+                id: 'fastapi-blockchain-provider',
+                name: analysisData.data_source || 'Live Blockchain Provider',
+                live: true,
+              },
+              attribution: analysisData.attribution,
+              latest_block: analysisData.latest_block,
+              graph: analysisData.graph,
+            },
+            { status: 200 }
+          );
+        }
+      } catch {
+        // Fallback to internal service
+      }
+    }
+
     const result = await BlockchainService.queryAddress({
       address,
       chain,

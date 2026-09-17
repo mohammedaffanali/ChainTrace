@@ -5,6 +5,7 @@ from app.models.vasp import Vasp, WalletCluster, VaspAddress
 from app.models.attribution import AttributionResult, EvidenceRecord
 from app.models.audit import AuditLog
 from app.models.task import TaskRecord
+from app.models.wallet_analysis import WalletAnalysisRecord, WebhookEventRecord
 
 __all__ = [
     "Base",
@@ -20,4 +21,6 @@ __all__ = [
     "EvidenceRecord",
     "AuditLog",
     "TaskRecord",
+    "WalletAnalysisRecord",
+    "WebhookEventRecord",
 ]

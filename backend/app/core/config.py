@@ -1,6 +1,13 @@
 import os
+from pathlib import Path
 from typing import List, Optional
+from dotenv import load_dotenv
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Locate and load .env from current directory, backend, or project root
+for p in [Path.cwd() / ".env", Path(__file__).resolve().parents[2] / ".env", Path(__file__).resolve().parents[3] / ".env"]:
+    if p.exists():
+        load_dotenv(p, override=False)
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "CHAINTRACE Backend Intelligence API"
@@ -60,9 +67,13 @@ class Settings(BaseSettings):
     # Blockchain Provider RPCs & Explorer APIs
     ETH_RPC_URL: str = os.getenv("ETH_RPC_URL", "https://cloudflare-eth.com")
     POLYGON_RPC_URL: str = os.getenv("POLYGON_RPC_URL", "https://polygon-rpc.com")
-    ETHERSCAN_API_KEY: Optional[str] = os.getenv("ETHERSCAN_API_KEY", "")
-    POLYGONSCAN_API_KEY: Optional[str] = os.getenv("POLYGONSCAN_API_KEY", "")
-    TRONGRID_API_KEY: Optional[str] = os.getenv("TRONGRID_API_KEY", "")
+    ETHERSCAN_API_KEY: Optional[str] = os.getenv("ETHERSCAN_API_KEY") or os.getenv("ETHEREUM_API_KEY") or ""
+    POLYGONSCAN_API_KEY: Optional[str] = os.getenv("POLYGONSCAN_API_KEY") or os.getenv("POLYGON_API_KEY") or ""
+    ALCHEMY_API_KEY: Optional[str] = os.getenv("ALCHEMY_API_KEY", "")
+    ALCHEMY_ETH_URL: str = os.getenv("ALCHEMY_ETH_URL", "https://eth-mainnet.g.alchemy.com/v2")
+    ALCHEMY_POLYGON_URL: str = os.getenv("ALCHEMY_POLYGON_URL", "https://polygon-mainnet.g.alchemy.com/v2")
+    ALCHEMY_WEBHOOK_SIGNING_KEY: Optional[str] = os.getenv("ALCHEMY_WEBHOOK_SIGNING_KEY", "")
+    TRONGRID_API_KEY: Optional[str] = os.getenv("TRONGRID_API_KEY") or os.getenv("TRON_API_KEY") or ""
     TRON_FULL_NODE_URL: str = os.getenv("TRON_FULL_NODE_URL", "https://api.trongrid.io")
 
     # Graph Databases & Storage
@@ -81,6 +92,10 @@ class Settings(BaseSettings):
         os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "vasp_database.json")
     )
 
-    model_config = SettingsConfigDict(case_sensitive=True, env_file=".env", extra="ignore")
+    model_config = SettingsConfigDict(
+        case_sensitive=True,
+        env_file=(".env", "../.env", os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), ".env")),
+        extra="ignore"
+    )
 
 settings = Settings()

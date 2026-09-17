@@ -2,7 +2,7 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from app.core.config import settings
-from app.api.routes import auth, wallets, attribution, investigations, reports, tasks, vasp_admin, websocket, users
+from app.api.routes import auth, wallets, attribution, investigations, reports, tasks, vasp_admin, websocket, users, wallet_analysis, webhooks
 from app.db.init_data import seed_database
 from app.db.session import is_fallback_mode
 
@@ -56,6 +56,8 @@ app.include_router(reports.router, prefix=f"{settings.API_V1_STR}/reports", tags
 app.include_router(tasks.router, prefix=f"{settings.API_V1_STR}/tasks", tags=["Tasks"])
 app.include_router(vasp_admin.router, prefix=f"{settings.API_V1_STR}/vasp", tags=["VASP Admin"])
 app.include_router(websocket.router, prefix=f"{settings.API_V1_STR}/ws", tags=["Live Telemetry WebSocket"])
+app.include_router(wallet_analysis.router, prefix=f"{settings.API_V1_STR}/analysis", tags=["Wallet Intelligence Analysis"])
+app.include_router(webhooks.router, prefix=f"{settings.API_V1_STR}/webhooks", tags=["Blockchain Webhooks"])
 
 @app.get("/health", tags=["Health"])
 def health_check():

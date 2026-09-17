@@ -205,4 +205,83 @@ flowchart LR
 
 ---
 
+## 7. Real-Time Blockchain Intelligence Implementation
+
+### 7.1 Architecture & End-to-End Data Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant UI as Next.js 15 Frontend
+    participant API as FastAPI Backend (/api/v1/analysis/wallet)
+    participant DB as Relational DB (PostgreSQL / SQLite)
+    participant Prov as Blockchain Provider (Etherscan V2 / Alchemy / TronGrid)
+    participant Norm as Transaction Normalizer
+    participant Graph as Dynamic Graph Service
+    participant Attr as Explainable Attribution Engine
+
+    UI->>API: POST /api/v1/analysis/wallet { address, network, hops, limit }
+    API->>Prov: Validate address syntax (EVM / Base58)
+    API->>Prov: Query native balance & latest block
+    API->>Prov: Fetch raw on-chain transactions & token transfers
+    Prov-->>API: Raw provider transactions list
+    API->>Norm: normalize_batch(raw_transactions)
+    Norm-->>API: NormalizedTransaction models (deduplicated, sorted)
+    API->>Graph: build_flow_graph(starting_address, network, hops, txs)
+    Graph-->>API: Directed graph (nodes, edges, layout, stats)
+    API->>Attr: attribute_wallet(target_address, network, txs)
+    Attr-->>API: Attribution docket (VASP name, confidence, evidence, limitations)
+    API->>DB: Persist WalletAnalysisRecord & audit trail
+    API-->>UI: Complete analysis JSON payload
+    UI->>UI: Render Cytoscape.js fund flow graph & live telemetry cards
+```
+
+### 7.2 Provider Layer Specifications
+
+| Provider | Supported Networks | Primary APIs / Protocols | Authentication & Rate Limits |
+| :--- | :--- | :--- | :--- |
+| `EtherscanProvider` | Ethereum (Chain ID: 1), Polygon (Chain ID: 137) | Etherscan API V2 (`/v2/api?chainid=...`), account `txlist`, `tokentx`, `balance` | `ETHERSCAN_API_KEY`, exponential backoff with retry on 429 |
+| `AlchemyProvider` | Ethereum, Polygon | JSON-RPC 2.0 (`alchemy_getAssetTransfers`, `eth_blockNumber`, `eth_getBalance`) | `ALCHEMY_API_KEY`, Webhook HMAC-SHA256 signature verification |
+| `TronProvider` | Tron (Mainnet) | TronGrid REST (`/v1/accounts/.../transactions`, `/wallet/getaccount`) | `TRONGRID_API_KEY` (or public rate limit), Base58 decoding |
+| `Web3Service` | EVM fallback | Resilient multi-RPC list (`llama`, `ankr`, `cloudflare`) | Public RPC load-balancing, auto-failover on JSON-RPC error |
+
+### 7.3 Anti-Overclaiming & Zero-Speculation Design
+1. **Factual Evidence Requirement**: An address is only attributed to a VASP if there is direct documented registry evidence (deposit hot wallet, cluster registration, or confirmed on-chain deposit transaction).
+2. **Explicit Fallback**: If no VASP match is proven, the engine strictly outputs:
+   - `nearest_vasp: "Unknown / Unverified"`
+   - `confidence_score: 0.0`
+   - `status: "NO_RELIABLE_ATTRIBUTION"`
+   - `legal_limitations: "Zero-speculation rule: Unattributed on-chain wallet cannot be definitively linked to a registered VASP without subpoena confirmation."`
+3. **BSA 2023 Statutory Compliance**: All attribution dockets output mandatory legal disclaimer text specifying that forensic findings require a Section 65B Certificate under the Bharatiya Sakshya Adhiniyam, 2023 for judicial court admissibility.
+
+### 7.4 Webhook Receiver Pipeline
+- **Endpoint**: `POST /api/v1/webhooks/alchemy`
+- **Security**: Validates `x-alchemy-signature` header using HMAC-SHA256 against `ALCHEMY_WEBHOOK_SIGNING_KEY`.
+- **Deduplication & Storage**: Computes SHA-256 hash of event payload, checks for duplicate webhook ID, and stores raw event in `webhook_events` database table.
+
+### 7.5 Verification & Testing Instructions
+- **Backend Test Suite**:
+  ```bash
+  cd backend
+  .\venv\Scripts\python -m pytest tests -v
+  ```
+  Runs 24 automated unit and integration tests covering providers, normalizer, dynamic graph, attribution engine, routes, and authentication.
+- **Frontend Test Suite**:
+  ```bash
+  npm test
+  ```
+  Runs 64 frontend test suites validating provider registry, caching, graph layout, attribution scoring formulas, and anti-overclaiming protocols.
+- **End-to-End On-Chain Verification**:
+  ```bash
+  backend\venv\Scripts\python scripts/verify_realtime_pipeline.py
+  ```
+  Queries live on-chain mainnet data via Etherscan API V2 for Binance (`0x28C6c06298d514Db089934071355E5743bf21d60`), verifies anti-overclaiming on burn address (`0x000...dEaD`), and checks webhook signature verification.
+- **Production Build**:
+  ```bash
+  npm run build
+  ```
+  Compiles all Next.js static pages, dynamic server routes, and API proxies.
+
+---
+
 *Architecture specification approved for Phase 4 design gate review.*

@@ -27,6 +27,42 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const BACKEND_URL = process.env.FASTAPI_BACKEND_URL || 'http://localhost:8000';
+
+    // 1. Attempt to query FastAPI backend as single source of truth for graph intelligence
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+      const res = await fetch(`${BACKEND_URL}/api/v1/analysis/wallet`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          cookie: req.headers.get('cookie') || '',
+          authorization: req.headers.get('authorization') || '',
+        },
+        body: JSON.stringify({
+          address: address.trim(),
+          network: (chain || 'ethereum').toLowerCase(),
+          direction,
+          max_hops: Number(maxHops),
+          limit: Number(transactionLimit),
+        }),
+        signal: controller.signal,
+      });
+      clearTimeout(timeoutId);
+
+      if (res.ok) {
+        const analysisData = await res.json();
+        if (analysisData.graph && analysisData.graph.nodes?.length > 0) {
+          return NextResponse.json(analysisData.graph, { status: 200 });
+        }
+      }
+    } catch {
+      // Backend not running or timeout, proceed to internal graph builder
+    }
+
+    // 2. Internal graph builder fallback
     const graph = await buildTransactionGraph(address.trim(), chain, {
       maxHops: Number(maxHops),
       maxNodes: Number(maxNodes),
