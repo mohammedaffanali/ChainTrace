@@ -266,50 +266,50 @@ export default function ChainTraceBackground({ variant = 'landing' }: ChainTrace
       });
     }
 
-    // Color Palette: Deep Intelligence Theme (Void Eclipse, Carmin, Forest Green, Aero)
+    // Color Palette: Deep Intelligence Theme
     const getColors = () => {
       const isDark = document.documentElement.classList.contains('dark');
-      const op = isDashboard ? 0.38 : 0.82;
+      const op = isDashboard ? 0.45 : 0.88;
 
       if (isDark) {
         return {
-          grid: 'rgba(37, 40, 45, ' + (0.45 * op) + ')', // charcoal slate
-          attributionPath: 'rgba(124, 185, 232, ' + (0.85 * op) + ')', // aero blue
-          launderPath: 'rgba(157, 154, 146, ' + (0.35 * op) + ')', // muted warm
-          clusterInterior: 'rgba(37, 40, 45, ' + (0.5 * op) + ')',
-          suspectStroke: 'rgba(178, 34, 34, ' + (0.95 * op) + ')', // crimson red
-          suspectFill: 'rgba(150, 0, 24, ' + (0.88 * op) + ')', // carmin red
-          suspectHalo: 'rgba(150, 0, 24, ' + (0.18 * op) + ')',
-          vaspStroke: 'rgba(173, 193, 120, ' + (0.95 * op) + ')', // olivine green
-          vaspFill: 'rgba(27, 81, 45, ' + (0.9 * op) + ')', // forest green
-          vaspHalo: 'rgba(27, 81, 45, ' + (0.22 * op) + ')',
-          relayFill: 'rgba(93, 58, 156, ' + (0.85 * op) + ')', // imperial purple
-          muleFill: 'rgba(67, 107, 149, ' + (0.8 * op) + ')', // queen blue
-          particleAttribution: 'rgba(124, 185, 232, ' + (0.95 * op) + ')', // aero
-          particleLaunder: 'rgba(157, 154, 146, ' + (0.55 * op) + ')',
-          textPrimary: 'rgba(244, 240, 230, ' + (0.85 * op) + ')', // cream
-          textMuted: 'rgba(157, 154, 146, ' + (0.6 * op) + ')', // warm muted
-          bracketStroke: 'rgba(255, 255, 255, ' + (0.1 * op) + ')',
+          grid: 'rgba(30, 41, 59, ' + (0.35 * op) + ')',
+          attributionPath: 'rgba(6, 182, 212, ' + (0.85 * op) + ')',
+          launderPath: 'rgba(100, 116, 139, ' + (0.45 * op) + ')',
+          clusterInterior: 'rgba(51, 65, 85, ' + (0.4 * op) + ')',
+          suspectStroke: 'rgba(239, 68, 68, ' + (0.95 * op) + ')',
+          suspectFill: 'rgba(239, 68, 68, ' + (0.85 * op) + ')',
+          suspectHalo: 'rgba(239, 68, 68, ' + (0.15 * op) + ')',
+          vaspStroke: 'rgba(234, 179, 8, ' + (0.95 * op) + ')',
+          vaspFill: 'rgba(234, 179, 8, ' + (0.85 * op) + ')',
+          vaspHalo: 'rgba(234, 179, 8, ' + (0.12 * op) + ')',
+          relayFill: 'rgba(168, 85, 247, ' + (0.85 * op) + ')',
+          muleFill: 'rgba(59, 130, 246, ' + (0.75 * op) + ')',
+          particleAttribution: 'rgba(56, 189, 248, ' + (0.95 * op) + ')',
+          particleLaunder: 'rgba(148, 163, 184, ' + (0.65 * op) + ')',
+          textPrimary: 'rgba(226, 232, 240, ' + (0.75 * op) + ')',
+          textMuted: 'rgba(148, 163, 184, ' + (0.5 * op) + ')',
+          bracketStroke: 'rgba(71, 85, 105, ' + (0.35 * op) + ')',
         };
       } else {
         return {
-          grid: 'rgba(216, 211, 199, ' + (0.55 * op) + ')',
-          attributionPath: 'rgba(21, 96, 189, ' + (0.8 * op) + ')', // denim
-          launderPath: 'rgba(157, 154, 146, ' + (0.55 * op) + ')',
-          clusterInterior: 'rgba(216, 211, 199, ' + (0.5 * op) + ')',
-          suspectStroke: 'rgba(178, 34, 34, ' + (0.9 * op) + ')',
-          suspectFill: 'rgba(150, 0, 24, ' + (0.85 * op) + ')',
-          suspectHalo: 'rgba(150, 0, 24, ' + (0.12 * op) + ')',
-          vaspStroke: 'rgba(27, 81, 45, ' + (0.9 * op) + ')',
-          vaspFill: 'rgba(27, 81, 45, ' + (0.85 * op) + ')',
-          vaspHalo: 'rgba(27, 81, 45, ' + (0.12 * op) + ')',
-          relayFill: 'rgba(93, 58, 156, ' + (0.8 * op) + ')',
-          muleFill: 'rgba(67, 107, 149, ' + (0.75 * op) + ')',
-          particleAttribution: 'rgba(21, 96, 189, ' + (0.9 * op) + ')',
-          particleLaunder: 'rgba(116, 115, 111, ' + (0.6 * op) + ')',
-          textPrimary: 'rgba(21, 23, 27, ' + (0.85 * op) + ')',
-          textMuted: 'rgba(116, 115, 111, ' + (0.6 * op) + ')',
-          bracketStroke: 'rgba(21, 23, 27, ' + (0.15 * op) + ')',
+          grid: 'rgba(226, 232, 240, ' + (0.55 * op) + ')',
+          attributionPath: 'rgba(2, 132, 199, ' + (0.8 * op) + ')',
+          launderPath: 'rgba(203, 213, 225, ' + (0.55 * op) + ')',
+          clusterInterior: 'rgba(226, 232, 240, ' + (0.5 * op) + ')',
+          suspectStroke: 'rgba(220, 38, 38, ' + (0.9 * op) + ')',
+          suspectFill: 'rgba(220, 38, 38, ' + (0.85 * op) + ')',
+          suspectHalo: 'rgba(220, 38, 38, ' + (0.12 * op) + ')',
+          vaspStroke: 'rgba(202, 138, 4, ' + (0.9 * op) + ')',
+          vaspFill: 'rgba(202, 138, 4, ' + (0.85 * op) + ')',
+          vaspHalo: 'rgba(202, 138, 4, ' + (0.1 * op) + ')',
+          relayFill: 'rgba(147, 51, 234, ' + (0.8 * op) + ')',
+          muleFill: 'rgba(37, 99, 235, ' + (0.7 * op) + ')',
+          particleAttribution: 'rgba(2, 132, 199, ' + (0.9 * op) + ')',
+          particleLaunder: 'rgba(100, 116, 139, ' + (0.6 * op) + ')',
+          textPrimary: 'rgba(30, 41, 59, ' + (0.75 * op) + ')',
+          textMuted: 'rgba(100, 116, 139, ' + (0.5 * op) + ')',
+          bracketStroke: 'rgba(203, 213, 225, ' + (0.4 * op) + ')',
         };
       }
     };
