@@ -1,0 +1,68 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: [
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        /* Semantic Theme Tokens (Light Default & Preserved Dark Mode) */
+        'theme-bg': 'var(--background)',
+        'theme-bg-elevated': 'var(--background-elevated)',
+        'theme-surface': 'var(--surface)',
+        'theme-surface-secondary': 'var(--surface-secondary)',
+        'theme-surface-tertiary': 'var(--surface-tertiary)',
+        'theme-fg': 'var(--foreground)',
+        'theme-heading': 'var(--heading)',
+        'theme-text-secondary': 'var(--text-secondary)',
+        'theme-text-muted': 'var(--text-muted)',
+        'theme-border': 'var(--border)',
+        'theme-border-subtle': 'var(--border-subtle)',
+        'theme-border-active': 'var(--border-active)',
+        'theme-primary': 'var(--primary)',
+        'theme-primary-hover': 'var(--primary-hover)',
+        'theme-primary-dim': 'var(--primary-dim)',
+        'theme-accent': 'var(--accent)',
+        'theme-accent-hover': 'var(--accent-hover)',
+        'theme-gold': 'var(--gold)',
+        'theme-gold-soft': 'var(--gold-soft)',
+        'theme-success': 'var(--success)',
+        'theme-warning': 'var(--warning)',
+        'theme-danger': 'var(--danger)',
+
+        /* Tactical Intelligence Palette (Preserved) */
+        'tactical-obsidian': '#0B0F17',
+        'tactical-carrier': '#111827',
+        'tactical-midnight': '#161F30',
+        'tactical-console': '#1E293B',
+        'tactical-border': '#223048',
+        'tactical-border-subtle': '#1B2537',
+        'tactical-border-active': '#334155',
+        'cyber-blue': '#3B82F6',
+        'cyber-cyan': '#06B6D4',
+        'cyber-violet': '#8B5CF6',
+        'alert-red': '#EF4444',
+        'alert-amber': '#F59E0B',
+        'alert-green': '#10B981',
+      },
+      borderRadius: {
+        'DEFAULT': '0.25rem',
+        'sm': '0.125rem',
+        'md': '0.25rem',
+        'lg': '0.375rem',
+        'xl': '0.5rem',
+        '2xl': '0.75rem',
+        'full': '9999px',
+      },
+      fontFamily: {
+        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'space': ['Space Grotesk', 'sans-serif'],
+        'mono': ['JetBrains Mono', 'monospace'],
+      },
+    },
+  },
+  plugins: [],
+};

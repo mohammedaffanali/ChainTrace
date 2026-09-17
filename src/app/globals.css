@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* LIGHT THEME (CRISP FORENSIC DOSSIER) */
+  :root {
+    --background: #F8FAFC;
+    --background-elevated: #FFFFFF;
+    --surface: #FFFFFF;
+    --surface-secondary: #F1F5F9;
+    --surface-tertiary: #E2E8F0;
+    --surface-subtle: #F8FAFC;
+
+    --foreground: #0F172A;
+    --heading: #020617;
+    --text-secondary: #334155;
+    --text-muted: #64748B;
+
+    --border: #CBD5E1;
+    --border-subtle: #E2E8F0;
+    --border-active: #0284C7;
+
+    --primary: #0284C7;
+    --primary-hover: #0369A1;
+    --primary-dim: #E0F2FE;
+
+    --accent: #0D9488;
+    --accent-hover: #0F766E;
+    --accent-dim: #CCFBF1;
+
+    --crosschain: #7C3AED;
+    --crosschain-dim: #EDE9FE;
+
+    --gold: #B45309;
+    --gold-soft: #D97706;
+    --gold-dim: #FEF3C7;
+
+    --confidence-high: #059669;
+    --confidence-med: #0284C7;
+    --confidence-low: #D97706;
+    --confidence-insufficient: #DC2626;
+
+    --success: #059669;
+    --warning: #D97706;
+    --danger: #DC2626;
+
+    --card-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.08), 0 1px 2px -1px rgba(15, 23, 42, 0.05);
+    color-scheme: light dark;
+  }
+
+  /* DARK THEME (TACTICAL MIDNIGHT INTELLIGENCE) */
+  .dark {
+    --background: #080C14;
+    --background-elevated: #0D131F;
+    --surface: #111927;
+    --surface-secondary: #162235;
+    --surface-tertiary: #1E2D44;
+    --surface-subtle: #0B111D;
+
+    --foreground: #F1F5F9;
+    --heading: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --text-muted: #64748B;
+
+    --border: #1E2D44;
+    --border-subtle: #162235;
+    --border-active: #38BDF8;
+
+    --primary: #38BDF8;
+    --primary-hover: #0284C7;
+    --primary-dim: #0C2136;
+
+    --accent: #2DD4BF;
+    --accent-hover: #14B8A6;
+    --accent-dim: #0B2926;
+
+    --crosschain: #A78BFA;
+    --crosschain-dim: #261B3D;
+
+    --gold: #F59E0B;
+    --gold-soft: #FBBF24;
+    --gold-dim: #2D2006;
+
+    --confidence-high: #10B981;
+    --confidence-med: #38BDF8;
+    --confidence-low: #F59E0B;
+    --confidence-insufficient: #EF4444;
+
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    --card-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  *, *::before, *::after {
+    border-color: var(--border);
+  }
+
+  /* Custom crisp scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--background);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+}
+
+/* Reduced motion accessibility enforcement */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+  line-height: 1;
+  display: inline-block;
+}
+
+@layer utilities {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Spatial Grid & Forensic Canvas - Uniform, High-Precision */
+  .spatial-perspective-grid {
+    background-image: 
+      linear-gradient(to right, rgba(56, 189, 248, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(56, 189, 248, 0.08) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .spatial-perspective-grid-dense {
+    background-image: 
+      linear-gradient(to right, rgba(56, 189, 248, 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(56, 189, 248, 0.12) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px -2px rgba(56, 189, 248, 0.4);
+  }
+
+  .glow-amber {
+    box-shadow: 0 0 20px -2px rgba(245, 158, 11, 0.4);
+  }
+
+  .glow-emerald {
+    box-shadow: 0 0 24px -2px rgba(16, 185, 129, 0.45);
+  }
+}

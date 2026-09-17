@@ -1,0 +1,16 @@
+{
+  "name": "CHAINTRACE — Automated Blockchain Intelligence & VASP Attribution",
+  "short_name": "CHAINTRACE",
+  "description": "Automated attribution of unknown cryptocurrency wallets to nearest Virtual Asset Service Providers through blockchain intelligence.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F5F0",
+  "theme_color": "#155EEF",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

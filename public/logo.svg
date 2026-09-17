@@ -1,0 +1,87 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60" fill="none">
+  <defs>
+    <linearGradient id="ctHexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#155EEF"/>
+      <stop offset="60%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#087F8C"/>
+    </linearGradient>
+    <linearGradient id="ctCubeTop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+    <linearGradient id="ctCubeLeft" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0369A1"/>
+      <stop offset="100%" stop-color="#0C4A6E"/>
+    </linearGradient>
+    <linearGradient id="ctCubeRight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#075985"/>
+    </linearGradient>
+    <linearGradient id="wordmarkTrace" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#155EEF"/>
+      <stop offset="100%" stop-color="#06B6D4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ======================================================== -->
+  <!-- EMBLEM: DIRECTION 2 - NETWORK INTELLIGENCE CUBE & C-HEX  -->
+  <!-- ======================================================== -->
+  <g transform="translate(6, 6)">
+    <!-- Ambient Glow Filter / Backdrop Container -->
+    <rect x="0" y="0" width="48" height="48" rx="10" fill="#0D1C2D" stroke="url(#ctHexGrad)" stroke-width="1.5"/>
+
+    <!-- Outer Hexagonal C-Chassis -->
+    <path d="M 34 13 L 24 7 L 12 14 L 12 34 L 24 41 L 34 35" 
+          stroke="url(#ctHexGrad)" 
+          stroke-width="2.5" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+
+    <!-- Inner C-Channel Notch Details -->
+    <path d="M 30 16 L 24 12 L 16 17 L 16 31 L 24 36 L 30 32" 
+          stroke="#0C4A6E" 
+          stroke-width="1" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+
+    <!-- Central Floating Intelligence Cube (Isometric) -->
+    <!-- Center point: (24, 24) -->
+    <!-- Top Face -->
+    <polygon points="24,17 30,20.5 24,24 18,20.5" fill="url(#ctCubeTop)" stroke="#E0F2FE" stroke-width="0.5"/>
+    <!-- Left Face -->
+    <polygon points="18,20.5 24,24 24,31 18,27.5" fill="url(#ctCubeLeft)" stroke="#38BDF8" stroke-width="0.5"/>
+    <!-- Right Face -->
+    <polygon points="24,24 30,20.5 30,27.5 24,31" fill="url(#ctCubeRight)" stroke="#38BDF8" stroke-width="0.5"/>
+
+    <!-- Micro Core Node (Attribution Focus) -->
+    <circle cx="24" cy="24" r="1.5" fill="#FFFFFF"/>
+
+    <!-- Circuit Connection Nodes on Outer Hex Points -->
+    <circle cx="34" cy="13" r="1.8" fill="#38BDF8"/>
+    <circle cx="12" cy="14" r="1.8" fill="#155EEF"/>
+    <circle cx="12" cy="34" r="1.8" fill="#087F8C"/>
+    <circle cx="34" cy="35" r="1.8" fill="#A67C32"/>
+  </g>
+
+  <!-- ======================================================== -->
+  <!-- WORDMARK: "CHAINTRACE" + SUB-CLASSIFICATION PILL         -->
+  <!-- ======================================================== -->
+  <g transform="translate(64, 0)">
+    <!-- Main Wordmark -->
+    <text x="0" y="29" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="800" font-size="19" letter-spacing="1">
+      <tspan fill="currentColor" class="text-theme-heading">CHAIN</tspan>
+      <tspan fill="url(#wordmarkTrace)">TRACE</tspan>
+    </text>
+
+    <!-- Sub-Brand Pill Badge -->
+    <rect x="116" y="16" width="56" height="15" rx="3" fill="#0D1C2D" stroke="#155EEF" stroke-width="0.8"/>
+    <text x="122" y="27" fill="#06B6D4" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="8.5" letter-spacing="1">
+      VASP INTEL
+    </text>
+
+    <!-- Subtitle Line -->
+    <text x="0" y="44" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-weight="600" font-size="8.5" letter-spacing="2">
+      BLOCKCHAIN FORENSICS ENCLAVE
+    </text>
+  </g>
+</svg>
